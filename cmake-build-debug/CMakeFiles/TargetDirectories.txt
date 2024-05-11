@@ -1,0 +1,3 @@
+/home/rajab/Desktop/MyLibs/cmake-build-debug/CMakeFiles/MyLibs.dir
+/home/rajab/Desktop/MyLibs/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/rajab/Desktop/MyLibs/cmake-build-debug/CMakeFiles/rebuild_cache.dir
