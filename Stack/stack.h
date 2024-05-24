@@ -5,7 +5,8 @@
 #include<stdbool.h>
 #endif
 
-typedef struct {
+typedef struct
+{
 	int *elements;
 	int top;
 	int capacity;
