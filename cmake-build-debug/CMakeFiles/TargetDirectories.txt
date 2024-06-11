@@ -1,3 +1,8 @@
-/home/rajab/Desktop/MyLibs/cmake-build-debug/CMakeFiles/MyLibs.dir
+/home/rajab/Desktop/MyLibs/cmake-build-debug/CMakeFiles/sll.dir
+/home/rajab/Desktop/MyLibs/cmake-build-debug/CMakeFiles/dll.dir
+/home/rajab/Desktop/MyLibs/cmake-build-debug/CMakeFiles/hash.dir
+/home/rajab/Desktop/MyLibs/cmake-build-debug/CMakeFiles/queue.dir
+/home/rajab/Desktop/MyLibs/cmake-build-debug/CMakeFiles/sort.dir
+/home/rajab/Desktop/MyLibs/cmake-build-debug/CMakeFiles/stack.dir
 /home/rajab/Desktop/MyLibs/cmake-build-debug/CMakeFiles/edit_cache.dir
 /home/rajab/Desktop/MyLibs/cmake-build-debug/CMakeFiles/rebuild_cache.dir
