@@ -2,16 +2,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-Stack *createStack(int capacity)
+Stack* createStack(int capacity)
 {
-	Stack *stack = (Stack *) malloc(sizeof(Stack));
-	if (stack == NULL)
+	Stack* stack = (Stack*) malloc(sizeof(Stack));
+	if(!stack)
 	{
 		fprintf(stderr, "Memory allocation failed\n");
 		exit(EXIT_FAILURE);
 	}
-	stack->elements = (int *) malloc(capacity * sizeof(int));
-	if (stack->elements == NULL)
+	stack->elements = (int*) malloc(capacity * sizeof(int));
+	if(!stack->elements)
 	{
 		fprintf(stderr, "Memory allocation failed\n");
 		free(stack);
@@ -22,25 +22,25 @@ Stack *createStack(int capacity)
 	return stack;
 }
 
-void destroyStack(Stack *stack)
+void destroyStack(Stack* stack)
 {
 	free(stack->elements);
 	free(stack);
 }
 
-bool isFull(Stack *stack)
+bool isFull(Stack* stack)
 {
 	return stack->top == stack->capacity - 1;
 }
 
-bool isEmpty(Stack *stack)
+bool isEmpty(Stack* stack)
 {
 	return stack->top == -1;
 }
 
-void push(Stack *stack, int val)
+void push(Stack* stack, int val)
 {
-	if (isFull(stack))
+	if(isFull(stack))
 	{
 		fprintf(stderr, "Stack is full\n");
 		return;
@@ -48,9 +48,9 @@ void push(Stack *stack, int val)
 	stack->elements[++stack->top] = val;
 }
 
-int pop(Stack *stack)
+int pop(Stack* stack)
 {
-	if (isEmpty(stack))
+	if(isEmpty(stack))
 	{
 		fprintf(stderr, "Stack is empty\n");
 		exit(EXIT_FAILURE);
@@ -58,9 +58,9 @@ int pop(Stack *stack)
 	return stack->elements[stack->top--];
 }
 
-int peek(Stack *stack)
+int peek(Stack* stack)
 {
-	if (isEmpty(stack))
+	if(isEmpty(stack))
 	{
 		fprintf(stderr, "Stack is empty\n");
 		exit(EXIT_FAILURE);
@@ -68,15 +68,15 @@ int peek(Stack *stack)
 	return stack->elements[stack->top];
 }
 
-void printStack(Stack *stack)
+void printStack(Stack* stack)
 {
-	if (isEmpty(stack))
+	if(isEmpty(stack))
 	{
 		printf("Stack is empty\n");
 		return;
 	}
 	printf("Stack elements: ");
-	for (int i = stack->top; i >= 0; i--)
+	for(int i = stack->top; i >= 0; i--)
 	{
 		printf("%d ", stack->elements[i]);
 	}

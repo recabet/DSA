@@ -4,52 +4,51 @@
 #include<errno.h>
 
 
-
-void createSLL(node **head)
+void createSLL(node** head)
 {
-	if ( *head == NULL)
+	if(!*head)
 	{
-		*head=(node*)malloc(sizeof(node));
+		*head = (node*) malloc(sizeof(node));
 	}
-	node *temp = *head;
+	node* temp = *head;
 	int n;
 	printf("How many nodes do you want?\n");
 	scanf("%d", &n);
-	if(n<=0)
+	if(n <= 0)
 	{
 		fprintf(stderr, "invalid number of nodes\n", errno);
 		exit(EXIT_FAILURE);
 	}
 	else
 	{
-		for (int i = 1; i <= n; i++)
+		for(int i = 1; i <= n; i++)
 		{
 			printf("Enter the value of node %d\n", i);
 			scanf("%d", &(temp->val));
-			if (i < n)
+			if(i < n)
 			{
-				temp->next = (node *) malloc(sizeof(node));
+				temp->next = (node*) malloc(sizeof(node));
 				temp = temp->next;
 			}
-			if (i == n)
+			if(i == n)
 			{
-				temp->next = NULL;
+				temp->next = nullptr;
 			}
 		}
 	}
 }
 
-void displaySLL(node *head)
+void displaySLL(node* head)
 {
-	node *temp = head;
-	if (temp == NULL)
+	node* temp = head;
+	if(!temp)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
 	else
 	{
-		while (temp != NULL)
+		while(temp)
 		{
 			printf("%d -> ", temp->val);
 			temp = temp->next;
@@ -58,16 +57,16 @@ void displaySLL(node *head)
 	printf("NULL");
 }
 
-int countNodeSLL(node *head)
+int countNodeSLL(node* head)
 {
-	node *temp = head;
+	node* temp = head;
 	int count = 0;
-	if(head==NULL)
+	if(!head)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
-	while (temp != NULL)
+	while(temp)
 	{
 		count++;
 		temp = temp->next;
@@ -75,17 +74,17 @@ int countNodeSLL(node *head)
 	return count;
 }
 
-bool searchSLL(node *head, int val)
+bool searchSLL(node* head, int val)
 {
-	node *temp = head;
-	if(head==NULL)
+	node* temp = head;
+	if(!head)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
-	while (temp != NULL)
+	while(temp)
 	{
-		if (temp->val == val)
+		if(temp->val == val)
 		{
 			return true;
 		}
@@ -94,55 +93,55 @@ bool searchSLL(node *head, int val)
 	return false;
 }
 
-void insertElementBeginningSLL(node **head, int val)
+void insertElementBeginningSLL(node** head, int val)
 {
-	if(*head==NULL)
+	if(!*head )
 	{
-		*head=(node*)malloc(sizeof(node));
+		*head = (node*) malloc(sizeof(node));
 	}
 
-	node *inserted = (node *) malloc(sizeof(node));
+	node* inserted = (node*) malloc(sizeof(node));
 	inserted->val = val;
 	inserted->next = *head;
 	*head = inserted;
 }
 
-void insertElementEndSLL(node *head, int val)
+void insertElementEndSLL(node* head, int val)
 {
-	node *temp = head;
-	if(head==NULL)
+	node* temp = head;
+	if(!head)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
-	node *inserted = (node *) malloc(sizeof(node));
+	node* inserted = (node*) malloc(sizeof(node));
 	inserted->val = val;
-	while (temp->next != NULL)
+	while(temp->next)
 	{
 		temp = temp->next;
 	}
 	temp->next = inserted;
-	inserted->next = NULL;
+	inserted->next = nullptr;
 }
 
-void insertElementMiddleSLL(node *head, int pos, int val)
+void insertElementMiddleSLL(node* head, int pos, int val)
 {
-	node *temp = head;
-	if(head==NULL)
+	node* temp = head;
+	if(!head)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
 		exit(EXIT_FAILURE);
 	}
-	node *inserted = (node *) malloc(sizeof(node));
+	node* inserted = (node*) malloc(sizeof(node));
 	inserted->val = val;
-	if (pos <= 1 || pos >= countNodeSLL(head))
+	if(pos <= 1 || pos >= countNodeSLL(head))
 	{
-		fprintf(stderr,"Invalid pos\n",errno);
+		fprintf(stderr, "Invalid pos\n", errno);
 		exit(EXIT_FAILURE);
 	}
 	else
 	{
-		for (int i = 1; i < pos - 1; i++)
+		for(int i = 1; i < pos - 1; i++)
 		{
 			temp = temp->next;
 		}
@@ -151,74 +150,74 @@ void insertElementMiddleSLL(node *head, int pos, int val)
 	}
 }
 
-void deleteElementBeginningSLL(node **head)
+void deleteElementBeginningSLL(node** head)
 {
-	if(head==NULL)
+	if(!head)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
 		exit(EXIT_FAILURE);
 	}
-	node *temp = *head;
+	node* temp = *head;
 	*head = temp->next;
 	free(temp);
 }
 
-void deleteElementMiddleSLL(node *head, int pos)
+void deleteElementMiddleSLL(node* head, int pos)
 {
 
-	if(head==NULL)
+	if(!head)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
 		exit(EXIT_FAILURE);
 	}
-	node *temp = head;
-	if (pos >= countNodeSLL(head) || pos < 1)
+	node* temp = head;
+	if(pos >= countNodeSLL(head) || pos < 1)
 	{
-		fprintf(stderr,"Invalid pos",errno);
+		fprintf(stderr, "Invalid pos", errno);
 		exit(EXIT_FAILURE);
 	}
 	else
 	{
-		for (int i = 1; i < pos - 1; i++)
+		for(int i = 1; i < pos - 1; i++)
 		{
 			temp = temp->next;
 		}
-		node *deleted = temp->next;
+		node* deleted = temp->next;
 		temp->next = deleted->next;
 		free(deleted);
 	}
 }
 
-void deleteElementEndSLL(node *head)
+void deleteElementEndSLL(node* head)
 {
-	node *temp = head;
-	if(head==NULL)
+	node* temp = head;
+	if(!head)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
 		exit(EXIT_FAILURE);
 	}
-	while (temp->next->next != NULL)
+	while(temp->next->next)
 	{
 		temp = temp->next;
 	}
 	free(temp->next);
-	temp->next = NULL;
+	temp->next = nullptr;
 }
 
-void sortSLL(node *head)
+void sortSLL(node* head)
 {
-	if(head==NULL)
+	if(!head)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
 	int n = countNodeSLL(head);
-	for (int i = 1; i <= n - 1; i++)
+	for(int i = 1; i <= n - 1; i++)
 	{
-		node *temp = head;
-		for (int j = 1; j <= n - i; j++)
+		node* temp = head;
+		for(int j = 1; j <= n - i; j++)
 		{
-			if (temp->val > temp->next->val)
+			if(temp->val > temp->next->val)
 			{
 				int tempVal = temp->val;
 				temp->val = temp->next->val;
@@ -229,51 +228,51 @@ void sortSLL(node *head)
 	}
 }
 
-void reverseSLL(node *head)
+void reverseSLL(node* head)
 {
-	if(head==NULL)
+	if(!head)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
 	int size = countNodeSLL(head);
-	node *temp = head;
+	node* temp = head;
 	int arr[size];
-	for (int i = 0; i < size; i++)
+	for(int i = 0; i < size; i++)
 	{
 		arr[i] = temp->val;
 		temp = temp->next;
 	}
 	temp = head;
-	for (int i = size - 1; i >= 0; i--)
+	for(int i = size - 1; i >= 0; i--)
 	{
 		temp->val = arr[i];
 		temp = temp->next;
 	}
 }
 
-void insertSLL(node *head1, node *head2, int pos)
+void insertSLL(node* head1, node* head2, int pos)
 {
-	node *temp1 = head1;
-	node *temp2 = head2;
-	if (temp1 == NULL || temp2 == NULL)
+	node* temp1 = head1;
+	node* temp2 = head2;
+	if(!temp1 || !temp2)
 	{
-		fprintf(stderr,"At least one of your lists doesn't exist\n",errno);
+		fprintf(stderr, "At least one of your lists doesn't exist\n", errno);
 		exit(EXIT_FAILURE);
 	}
-	if(pos<=1||pos>= countNodeSLL(head1))
+	if(pos <= 1 || pos >= countNodeSLL(head1))
 	{
-		fprintf(stderr,"Invalid pos\n",errno);
+		fprintf(stderr, "Invalid pos\n", errno);
 		exit(EXIT_FAILURE);
 
 	}
 	else
 	{
-		for (int i = 1; i < pos - 1 && temp1 != NULL; i++)
+		for(int i = 1; i < pos - 1 && temp1; i++)
 		{
 			temp1 = temp1->next;
 		}
-		while (temp2->next != NULL)
+		while(temp2->next)
 		{
 			temp2 = temp2->next;
 		}
@@ -282,17 +281,17 @@ void insertSLL(node *head1, node *head2, int pos)
 	}
 }
 
-void insertSLLBeginning(node **head1, node *head2)
+void insertSLLBeginning(node** head1, node* head2)
 {
-	node *temp2 = head2;
-	if (*head1 == NULL || head2 == NULL)
+	node* temp2 = head2;
+	if(!*head1  || !head2)
 	{
-		fprintf(stderr,"At least one of your lists doesn't exist\n",errno);
+		fprintf(stderr, "At least one of your lists doesn't exist\n", errno);
 		exit(EXIT_FAILURE);
 	}
 	else
 	{
-		while (temp2->next != NULL)
+		while(temp2->next)
 		{
 			temp2 = temp2->next;
 		}
@@ -302,30 +301,30 @@ void insertSLLBeginning(node **head1, node *head2)
 }
 
 
-void deleteSLL(node **head, int index1, int index2, int numberOfNodes)
+void deleteSLL(node** head, int index1, int index2, int numberOfNodes)
 {
-	if (*head == NULL || index1 <= 0 || index2 > numberOfNodes || index1 > index2)
+	if(!*head || index1 <= 0 || index2 > numberOfNodes || index1 > index2)
 	{
-		fprintf(stderr,"Invalid parameters or list doesn't exist\n",errno);
+		fprintf(stderr, "Invalid parameters or list doesn't exist\n", errno);
 		exit(EXIT_FAILURE);
 	}
-	node *temp = *head;
-	node *prev = NULL;
+	node* temp = *head;
+	node* prev = nullptr;
 	int currentIndex = 1;
-	while (temp != NULL && currentIndex < index1)
+	while(temp && currentIndex < index1)
 	{
 		prev = temp;
 		temp = temp->next;
 		currentIndex++;
 	}
-	while (temp != NULL && currentIndex <= index2)
+	while(temp && currentIndex <= index2)
 	{
-		node *nextNode = temp->next;
+		node* nextNode = temp->next;
 		free(temp);
 		temp = nextNode;
 		currentIndex++;
 	}
-	if (prev == NULL)
+	if(!prev)
 	{
 		*head = temp;
 	}
@@ -334,17 +333,18 @@ void deleteSLL(node **head, int index1, int index2, int numberOfNodes)
 		prev->next = temp;
 	}
 }
-void insertSLLEnd(node *head1, node *head2)
+
+void insertSLLEnd(node* head1, node* head2)
 {
-	node *temp1 = head1;
-	if (head1 == NULL || head2 == NULL)
+	node* temp1 = head1;
+	if(!head1 ||! head2)
 	{
-		fprintf(stderr,"At least one of your lists doesn't exist\n",errno);
+		fprintf(stderr, "At least one of your lists doesn't exist\n", errno);
 		exit(EXIT_FAILURE);
 	}
 	else
 	{
-		while (temp1->next != NULL)
+		while(temp1->next)
 		{
 			temp1 = temp1->next;
 		}
@@ -353,31 +353,31 @@ void insertSLLEnd(node *head1, node *head2)
 }
 
 
-node *sliceSLL(node *head, int index1, int index2, int numberOfNodes)
+node* sliceSLL(node* head, int index1, int index2, int numberOfNodes)
 {
-	node *temp = head;
-	node *newHead = NULL;
-	node *newTail = NULL;
-	if (index1 <= 0 || index2 > numberOfNodes || index1 > index2)
+	node* temp = head;
+	node* newHead = nullptr;
+	node* newTail = nullptr;
+	if(index1 <= 0 || index2 > numberOfNodes || index1 > index2)
 	{
-		fprintf(stderr,"Invalid slice parameters\n",errno);
+		fprintf(stderr, "Invalid slice parameters\n", errno);
 		exit(EXIT_FAILURE);
 	}
-	for (int i = 1; i < index1; i++)
+	for(int i = 1; i < index1; i++)
 	{
-		if (temp == NULL)
+		if(!temp)
 		{
 			printf("Invalid slice parameters\n");
-			return NULL;
+			return nullptr;
 		}
 		temp = temp->next;
 	}
-	while (temp != NULL && index1 <= index2)
+	while(temp && index1 <= index2)
 	{
-		node *newTemp = (node *) malloc(sizeof(node));
+		node* newTemp = (node*) malloc(sizeof(node));
 		newTemp->val = temp->val;
-		newTemp->next = NULL;
-		if (newHead == NULL)
+		newTemp->next = nullptr;
+		if(!newHead)
 		{
 			newHead = newTemp;
 			newTail = newTemp;
@@ -393,33 +393,33 @@ node *sliceSLL(node *head, int index1, int index2, int numberOfNodes)
 	return newHead;
 }
 
-void createCircularSLL(node **start)
+void createCircularSLL(node** start)
 {
-	if(*start==NULL)
+	if(!*start)
 	{
-		*start=(node*)malloc(sizeof(node));
+		*start = (node*) malloc(sizeof(node));
 	}
-	node *temp = *start;
+	node* temp = *start;
 	int n;
 	printf("How many nodes do you want?\n");
 	scanf("%d", &n);
-	if (n <= 0)
+	if(n <= 0)
 	{
-		fprintf(stderr,"Invalid number of nodes\n",errno);
+		fprintf(stderr, "Invalid number of nodes\n", errno);
 		exit(EXIT_FAILURE);
 	}
 	else
 	{
-		for (int i = 1; i <= n; i++)
+		for(int i = 1; i <= n; i++)
 		{
 			printf("Enter the value of node %d\n", i);
 			scanf("%d", &(temp->val));
-			if (i < n)
+			if(i < n)
 			{
-				temp->next = (node *) malloc(sizeof(node));
+				temp->next = (node*) malloc(sizeof(node));
 				temp = temp->next;
 			}
-			if (i == n)
+			if(i == n)
 			{
 				temp->next = *start;
 			}
@@ -427,13 +427,13 @@ void createCircularSLL(node **start)
 	}
 }
 
-void displayCircularSLL(node *start)
+void displayCircularSLL(node* start)
 {
-	node *temp = start;
-	if(start==NULL)
+	node* temp = start;
+	if(!start)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
 	else
 	{
@@ -441,22 +441,22 @@ void displayCircularSLL(node *start)
 		{
 			printf("%d ->", temp->val);
 			temp = temp->next;
-		} while (temp != start);
+		} while(temp != start);
 	}
 }
 
-void insertElementBeginningCircularSLL(node **start, int val)
+void insertElementBeginningCircularSLL(node** start, int val)
 {
-	if(start==NULL)
+	if(!start)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
-	node *inserted = (node *) malloc(sizeof(node));
-	node *temp = *start;
+	node* inserted = (node*) malloc(sizeof(node));
+	node* temp = *start;
 	inserted->val = val;
 	inserted->next = *start;
-	while (temp->next != *start)
+	while(temp->next != *start)
 	{
 		temp = temp->next;
 	}
@@ -464,24 +464,24 @@ void insertElementBeginningCircularSLL(node **start, int val)
 	*start = inserted;
 }
 
-void insertElementMiddleCircularSLL(node *start, int pos, int val)
+void insertElementMiddleCircularSLL(node* start, int pos, int val)
 {
-	if(start==NULL)
+	if(!start)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
-	node *temp = start;
-	if (pos <= 1)
+	node* temp = start;
+	if(pos <= 1)
 	{
 		printf("Invalid pos");
 		return;
 	}
 	else
 	{
-		node *inserted = (node *) malloc(sizeof(node));
+		node* inserted = (node*) malloc(sizeof(node));
 		inserted->val = val;
-		for (int i = 1; i < pos - 1; i++)
+		for(int i = 1; i < pos - 1; i++)
 		{
 			temp = temp->next;
 		}
@@ -490,17 +490,17 @@ void insertElementMiddleCircularSLL(node *start, int pos, int val)
 	}
 }
 
-void insertElementEndCircularSLL(node *start, int val)
+void insertElementEndCircularSLL(node* start, int val)
 {
-	if(start==NULL)
+	if(!start)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
-	node *temp = start;
-	node *inserted = (node *) malloc(sizeof(node));
+	node* temp = start;
+	node* inserted = (node*) malloc(sizeof(node));
 	inserted->val = val;
-	while (temp->next != start)
+	while(temp->next != start)
 	{
 		temp = temp->next;
 	}
@@ -508,35 +508,35 @@ void insertElementEndCircularSLL(node *start, int val)
 	inserted->next = start;
 }
 
-bool searchCircularSLL(node *start, int val)
+bool searchCircularSLL(node* start, int val)
 {
-	if(start==NULL)
+	if(!start)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
-	node *temp = start;
+	node* temp = start;
 	do
 	{
-		if (temp->val == val)
+		if(temp->val == val)
 		{
 			return true;
 		}
 		temp = temp->next;
-	} while (temp != start);
+	} while(temp != start);
 	return false;
 }
 
-void deleteElementBeginningCircularSLL(node **start)
+void deleteElementBeginningCircularSLL(node** start)
 {
-	if(start==NULL)
+	if(!start)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
-	node *deleted = *start;
-	node *temp = *start;
-	while (temp->next != *start)
+	node* deleted = *start;
+	node* temp = *start;
+	while(temp->next != *start)
 	{
 		temp = temp->next;
 	}
@@ -545,39 +545,39 @@ void deleteElementBeginningCircularSLL(node **start)
 	free(deleted);
 }
 
-void deleteElementMiddleCircularSLL(node *start, int pos)
+void deleteElementMiddleCircularSLL(node* start, int pos)
 {
-	if(start==NULL)
+	if(!start)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
-	node *temp = start;
-	if (pos <= 1)
+	node* temp = start;
+	if(pos <= 1)
 	{
 		printf("Invalid pos");
 	}
 	else
 	{
-		for (int i = 1; i < pos - 1; i++)
+		for(int i = 1; i < pos - 1; i++)
 		{
 			temp = temp->next;
 		}
-		node *deleted = temp->next;
+		node* deleted = temp->next;
 		temp->next = deleted->next;
 		free(deleted);
 	}
 }
 
-void deleteElementEndCircularSLL(node *start)
+void deleteElementEndCircularSLL(node* start)
 {
-	if(start==NULL)
+	if(!start)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
-	node *temp = start;
-	while (temp->next->next != start)
+	node* temp = start;
+	while(temp->next->next != start)
 	{
 		temp = temp->next;
 	}
@@ -585,16 +585,16 @@ void deleteElementEndCircularSLL(node *start)
 	temp->next = start;
 }
 
-int countNodeCircularSLL(node *start)
+int countNodeCircularSLL(node* start)
 {
-	if(start==NULL)
+	if(!start)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
 	int count = 0;
-	node *temp = start;
-	if (temp->next == NULL)
+	node* temp = start;
+	if(!temp->next)
 	{
 		return count;
 	}
@@ -604,47 +604,47 @@ int countNodeCircularSLL(node *start)
 		{
 			count++;
 			temp = temp->next;
-		} while (temp != start);
+		} while(temp != start);
 		return count;
 	}
 }
 
-void reverseCircularSLL(node *start)
+void reverseCircularSLL(node* start)
 {
-	if(start==NULL)
+	if(!start)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
 	int n = countNodeCircularSLL(start);
 	int arr[n];
-	node *temp = start;
-	for (int i = 0; i < n; i++)
+	node* temp = start;
+	for(int i = 0; i < n; i++)
 	{
 		arr[i] = temp->val;
 		temp = temp->next;
 	}
-	for (int i = n - 1; i >= 0; i--)
+	for(int i = n - 1; i >= 0; i--)
 	{
 		temp->val = arr[i];
 		temp = temp->next;
 	}
 }
 
-void sortCircularSLL(node *start)
+void sortCircularSLL(node* start)
 {
-	if(start==NULL)
+	if(!start)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
 	int n = countNodeCircularSLL(start);
-	for (int i = 1; i <= n - 1; i++)
+	for(int i = 1; i <= n - 1; i++)
 	{
-		node *temp = start;
-		for (int j = 1; j <= n - i; j++)
+		node* temp = start;
+		for(int j = 1; j <= n - i; j++)
 		{
-			if (temp->val > temp->next->val)
+			if(temp->val > temp->next->val)
 			{
 				int tempVal = temp->val;
 				temp->val = temp->next->val;

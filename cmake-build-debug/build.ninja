@@ -51,7 +51,7 @@ build cmake_object_order_depends_target_sll: phony || cmake_object_order_depends
 
 build CMakeFiles/sll.dir/sll/sll.c.o: C_COMPILER__sll_unscanned_Debug /home/rajab/Desktop/MyLibs/sll/sll.c || cmake_object_order_depends_target_sll
   DEP_FILE = CMakeFiles/sll.dir/sll/sll.c.o.d
-  FLAGS = -g -std=gnu99 -fdiagnostics-color=always
+  FLAGS = -g -std=gnu2x -fdiagnostics-color=always
   INCLUDES = -I/home/rajab/Desktop/MyLibs/sll -I/home/rajab/Desktop/MyLibs/dll -I/home/rajab/Desktop/MyLibs/hash -I/home/rajab/Desktop/MyLibs/queue -I/home/rajab/Desktop/MyLibs/sort -I/home/rajab/Desktop/MyLibs/stack
   OBJECT_DIR = CMakeFiles/sll.dir
   OBJECT_FILE_DIR = CMakeFiles/sll.dir/sll
@@ -83,7 +83,7 @@ build cmake_object_order_depends_target_dll: phony || .
 
 build CMakeFiles/dll.dir/dll/dll.c.o: C_COMPILER__dll_unscanned_Debug /home/rajab/Desktop/MyLibs/dll/dll.c || cmake_object_order_depends_target_dll
   DEP_FILE = CMakeFiles/dll.dir/dll/dll.c.o.d
-  FLAGS = -g -std=gnu99 -fdiagnostics-color=always
+  FLAGS = -g -std=gnu2x -fdiagnostics-color=always
   INCLUDES = -I/home/rajab/Desktop/MyLibs/sll -I/home/rajab/Desktop/MyLibs/dll -I/home/rajab/Desktop/MyLibs/hash -I/home/rajab/Desktop/MyLibs/queue -I/home/rajab/Desktop/MyLibs/sort -I/home/rajab/Desktop/MyLibs/stack
   OBJECT_DIR = CMakeFiles/dll.dir
   OBJECT_FILE_DIR = CMakeFiles/dll.dir/dll
@@ -115,7 +115,7 @@ build cmake_object_order_depends_target_hash: phony || .
 
 build CMakeFiles/hash.dir/hash/hash.c.o: C_COMPILER__hash_unscanned_Debug /home/rajab/Desktop/MyLibs/hash/hash.c || cmake_object_order_depends_target_hash
   DEP_FILE = CMakeFiles/hash.dir/hash/hash.c.o.d
-  FLAGS = -g -std=gnu99 -fdiagnostics-color=always
+  FLAGS = -g -std=gnu2x -fdiagnostics-color=always
   INCLUDES = -I/home/rajab/Desktop/MyLibs/sll -I/home/rajab/Desktop/MyLibs/dll -I/home/rajab/Desktop/MyLibs/hash -I/home/rajab/Desktop/MyLibs/queue -I/home/rajab/Desktop/MyLibs/sort -I/home/rajab/Desktop/MyLibs/stack
   OBJECT_DIR = CMakeFiles/hash.dir
   OBJECT_FILE_DIR = CMakeFiles/hash.dir/hash
@@ -147,7 +147,7 @@ build cmake_object_order_depends_target_queue: phony || .
 
 build CMakeFiles/queue.dir/queue/queue.c.o: C_COMPILER__queue_unscanned_Debug /home/rajab/Desktop/MyLibs/queue/queue.c || cmake_object_order_depends_target_queue
   DEP_FILE = CMakeFiles/queue.dir/queue/queue.c.o.d
-  FLAGS = -g -std=gnu99 -fdiagnostics-color=always
+  FLAGS = -g -std=gnu2x -fdiagnostics-color=always
   INCLUDES = -I/home/rajab/Desktop/MyLibs/sll -I/home/rajab/Desktop/MyLibs/dll -I/home/rajab/Desktop/MyLibs/hash -I/home/rajab/Desktop/MyLibs/queue -I/home/rajab/Desktop/MyLibs/sort -I/home/rajab/Desktop/MyLibs/stack
   OBJECT_DIR = CMakeFiles/queue.dir
   OBJECT_FILE_DIR = CMakeFiles/queue.dir/queue
@@ -179,7 +179,7 @@ build cmake_object_order_depends_target_sort: phony || .
 
 build CMakeFiles/sort.dir/sort/sort.c.o: C_COMPILER__sort_unscanned_Debug /home/rajab/Desktop/MyLibs/sort/sort.c || cmake_object_order_depends_target_sort
   DEP_FILE = CMakeFiles/sort.dir/sort/sort.c.o.d
-  FLAGS = -g -std=gnu99 -fdiagnostics-color=always
+  FLAGS = -g -std=gnu2x -fdiagnostics-color=always
   INCLUDES = -I/home/rajab/Desktop/MyLibs/sll -I/home/rajab/Desktop/MyLibs/dll -I/home/rajab/Desktop/MyLibs/hash -I/home/rajab/Desktop/MyLibs/queue -I/home/rajab/Desktop/MyLibs/sort -I/home/rajab/Desktop/MyLibs/stack
   OBJECT_DIR = CMakeFiles/sort.dir
   OBJECT_FILE_DIR = CMakeFiles/sort.dir/sort
@@ -211,7 +211,7 @@ build cmake_object_order_depends_target_stack: phony || .
 
 build CMakeFiles/stack.dir/stack/stack.c.o: C_COMPILER__stack_unscanned_Debug /home/rajab/Desktop/MyLibs/stack/stack.c || cmake_object_order_depends_target_stack
   DEP_FILE = CMakeFiles/stack.dir/stack/stack.c.o.d
-  FLAGS = -g -std=gnu99 -fdiagnostics-color=always
+  FLAGS = -g -std=gnu2x -fdiagnostics-color=always
   INCLUDES = -I/home/rajab/Desktop/MyLibs/sll -I/home/rajab/Desktop/MyLibs/dll -I/home/rajab/Desktop/MyLibs/hash -I/home/rajab/Desktop/MyLibs/queue -I/home/rajab/Desktop/MyLibs/sort -I/home/rajab/Desktop/MyLibs/stack
   OBJECT_DIR = CMakeFiles/stack.dir
   OBJECT_FILE_DIR = CMakeFiles/stack.dir/stack

@@ -3,16 +3,16 @@
 #include <stdlib.h>
 
 
-Queue *createQueue (int capacity)
+Queue* createQueue(int capacity)
 {
-	Queue *queue = (Queue *) malloc(sizeof(Queue));
-	if (queue == NULL)
+	Queue* queue = (Queue*) malloc(sizeof(Queue));
+	if(!queue)
 	{
 		fprintf(stderr, "Memory allocation failed\n");
 		exit(EXIT_FAILURE);
 	}
-	queue->elements = (int *) malloc(capacity * sizeof(int));
-	if (queue->elements == NULL)
+	queue->elements = (int*) malloc(capacity * sizeof(int));
+	if(!queue->elements)
 	{
 		fprintf(stderr, "Memory allocation failed\n");
 		free(queue);
@@ -24,33 +24,33 @@ Queue *createQueue (int capacity)
 }
 
 
-void destroyQueue (Queue *queue)
+void destroyQueue(Queue* queue)
 {
 	free(queue->elements);
 	free(queue);
 }
 
 
-bool isFull (Queue *queue)
+bool isFull(Queue* queue)
 {
 	return (queue->rear + 1) % queue->capacity == queue->front;
 }
 
 
-bool isEmpty (Queue *queue)
+bool isEmpty(Queue* queue)
 {
 	return queue->front == -1;
 }
 
 
-void enqueue (Queue *queue, int val)
+void enqueue(Queue* queue, int val)
 {
-	if (isFull(queue))
+	if(isFull(queue))
 	{
 		fprintf(stderr, "Queue is full\n");
 		return;
 	}
-	if (isEmpty(queue))
+	if(isEmpty(queue))
 	{
 		queue->front = queue->rear = 0;
 	}
@@ -62,15 +62,15 @@ void enqueue (Queue *queue, int val)
 }
 
 
-int dequeue (Queue *queue)
+int dequeue(Queue* queue)
 {
-	if (isEmpty(queue))
+	if(isEmpty(queue))
 	{
 		fprintf(stderr, "Queue is empty\n");
 		exit(EXIT_FAILURE);
 	}
 	int val = queue->elements[queue->front];
-	if (queue->front == queue->rear)
+	if(queue->front == queue->rear)
 	{
 		queue->front = queue->rear = -1;
 	}
@@ -82,16 +82,16 @@ int dequeue (Queue *queue)
 }
 
 
-void printQueue (Queue *queue)
+void printQueue(Queue* queue)
 {
-	if (isEmpty(queue))
+	if(isEmpty(queue))
 	{
 		printf("Queue is empty\n");
 		return;
 	}
 	printf("Queue elements: ");
 	int i;
-	for (i = queue->front; i != queue->rear; i = (i + 1) % queue->capacity)
+	for(i = queue->front; i != queue->rear; i = (i + 1) % queue->capacity)
 	{
 		printf("%d ", queue->elements[i]);
 	}

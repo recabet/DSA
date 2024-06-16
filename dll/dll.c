@@ -4,50 +4,49 @@
 #include<errno.h>
 
 
-
-void createDLL(dnode **head)
+void createDLL(dnode** head)
 {
-	if (*head == NULL)
+	if(!*head)
 	{
-		*head = (dnode *) malloc(sizeof(dnode));
+		*head = (dnode*) malloc(sizeof(dnode));
 	}
-	dnode *temp = *head;
-	temp->prev = NULL;
+	dnode* temp = *head;
+	temp->prev = nullptr;
 	int n;
 	printf("Enter the number of nodes: ");
 	scanf("%d", &n);
-	if (n <= 0)
+	if(n <= 0)
 	{
 		fprintf(stderr, "invalid number of nodes\n", errno);
 		exit(EXIT_FAILURE);
 	}
-	for (int i = 1; i <= n; i++)
+	for(int i = 1; i <= n; i++)
 	{
 		printf("Enter the value of each node: ");
 		scanf("%d", &(temp->val));
-		if (i < n)
+		if(i < n)
 		{
-			temp->next = (dnode *) malloc(sizeof(dnode));
+			temp->next = (dnode*) malloc(sizeof(dnode));
 			temp->next->prev = temp;
 			temp = temp->next;
 		}
-		if (i == n)
+		if(i == n)
 		{
-			temp->next = NULL;
+			temp->next = nullptr;
 		}
 	}
 }
 
-void displayForwardDLL(dnode *head)
+void displayForwardDLL(dnode* head)
 {
-	if (head == NULL)
+	if(!head)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
 		exit(EXIT_FAILURE);
 	}
-	dnode *temp = head;
+	dnode* temp = head;
 	printf("NULL <-> ");
-	while (temp != NULL)
+	while(temp)
 	{
 		printf("%d <-> ", temp->val);
 		temp = temp->next;
@@ -55,20 +54,20 @@ void displayForwardDLL(dnode *head)
 	printf(" NULL");
 }
 
-void displayBackwardDLL(dnode *head)
+void displayBackwardDLL(dnode* head)
 {
-	if (head == NULL)
+	if(!head)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
 		exit(EXIT_FAILURE);
 	}
-	dnode *temp = head;
-	while (temp->next != NULL)
+	dnode* temp = head;
+	while(temp->next)
 	{
 		temp = temp->next;
 	}
 	printf("NULL -> ");
-	while (temp != NULL)
+	while(temp)
 	{
 		printf("%d -> ", temp->val);
 		temp = temp->prev;
@@ -76,54 +75,53 @@ void displayBackwardDLL(dnode *head)
 	printf("NULL ");
 }
 
-int countNode(dnode *head)
+int countNode(dnode* head)
 {
-
-	if(head==NULL)
+	if(!head)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
 		exit(EXIT_FAILURE);
 	}
-	dnode *temp = head;
+	dnode* temp = head;
 	int count = 0;
-	while (temp != NULL)
+	while(temp)
 	{
 		count++;
 		temp = temp->next;
 	}
 }
 
-void insertElementBeginningDLL(dnode **head, int val)
+void insertElementBeginningDLL(dnode** head, int val)
 {
-	if(*head==NULL)
+	if(!*head)
 	{
-		*head=(dnode*)malloc(sizeof(dnode));
+		*head = (dnode*) malloc(sizeof(dnode));
 	}
 
-	dnode *inserted = (dnode *) malloc(sizeof(dnode));
-	dnode *temp = *head;
+	dnode* inserted = (dnode*) malloc(sizeof(dnode));
+	dnode* temp = *head;
 	temp->prev = inserted;
 	inserted->next = temp;
-	inserted->prev = NULL;
+	inserted->prev = nullptr;
 	*head = inserted;
 }
 
-void insertElementMiddleDLL(dnode *head, int pos, int val)
+void insertElementMiddleDLL(dnode* head, int pos, int val)
 {
-	if(head==NULL)
+	if(!head)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
 		exit(EXIT_FAILURE);
 	}
-	if (pos <= 1 || pos >= countNodeDLL(head))
+	if(pos <= 1 || pos >= countNodeDLL(head))
 	{
-		fprintf(stderr,"Invalid pos\n",errno);
+		fprintf(stderr, "Invalid pos\n", errno);
 		exit(EXIT_FAILURE);
 	}
-	dnode *temp = head;
-	dnode *inserted = (dnode *) malloc(sizeof(dnode));
+	dnode* temp = head;
+	dnode* inserted = (dnode*) malloc(sizeof(dnode));
 	inserted->val = val;
-	for (int i = 1; i < pos - 1; i++)
+	for(int i = 1; i < pos - 1; i++)
 	{
 		temp = temp->next;
 	}
@@ -133,87 +131,87 @@ void insertElementMiddleDLL(dnode *head, int pos, int val)
 	inserted->prev = temp;
 }
 
-void insertElementEndDLL(dnode *head, int val)
+void insertElementEndDLL(dnode* head, int val)
 {
-	if(head==NULL)
+	if(!head)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
 		exit(EXIT_FAILURE);
 	}
-	dnode *temp = head;
-	dnode *inserted = (dnode *) malloc(sizeof(dnode));
+	dnode* temp = head;
+	dnode* inserted = (dnode*) malloc(sizeof(dnode));
 	inserted->val = val;
-	while (temp->next != NULL)
+	while(temp->next)
 	{
 		temp = temp->next;
 	}
-	inserted->next = NULL;
+	inserted->next = nullptr;
 	inserted->prev = temp;
 	temp->next = inserted;
 }
 
-void deleteElementBeginningDLL(dnode **head)
+void deleteElementBeginningDLL(dnode** head)
 {
-	if(head==NULL)
+	if(!head)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
 		exit(EXIT_FAILURE);
 	}
-	dnode *temp = *head;
+	dnode* temp = *head;
 	*head = temp->next;
-	temp->next->prev = NULL;
+	temp->next->prev = nullptr;
 	free(temp);
 }
 
-void deleteElementMiddleDLL(dnode *head, int pos)
+void deleteElementMiddleDLL(dnode* head, int pos)
 {
-	if(head==NULL)
+	if(!head)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
 		exit(EXIT_FAILURE);
 	}
-	dnode *temp = head;
-	if (pos >= countNodeDLL(head) || pos < 1)
+	dnode* temp = head;
+	if(pos >= countNodeDLL(head) || pos < 1)
 	{
 		printf("Invalid pos");
 	}
-	for (int i = 1; i < pos - 1; i++)
+	for(int i = 1; i < pos - 1; i++)
 	{
 		temp = temp->next;
 	}
-	dnode *temp2 = temp->next;
+	dnode* temp2 = temp->next;
 	temp2->next->prev = temp;
 	temp->next = temp2->next;
 	free(temp2);
 }
 
-void deleteElementEndDLL(dnode *head)
+void deleteElementEndDLL(dnode* head)
 {
-	if(head==NULL)
+	if(!head)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
 		exit(EXIT_FAILURE);
 	}
-	dnode *temp = head;
-	while (temp->next != NULL)
+	dnode* temp = head;
+	while(temp->next)
 	{
 		temp = temp->next;
 	}
-	temp->prev->next = NULL;
+	temp->prev->next = nullptr;
 	free(temp);
 }
 
-bool searchDLL(dnode *head, int val)
+bool searchDLL(dnode* head, int val)
 {
-	if(head==NULL)
+	if(!head)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
-	dnode *temp = head;
-	while (temp != NULL)
+	dnode* temp = head;
+	while(temp)
 	{
-		if (temp->val == val)
+		if(temp->val == val)
 		{
 			return true;
 		}
@@ -222,20 +220,20 @@ bool searchDLL(dnode *head, int val)
 	return false;
 }
 
-void sortDLL(dnode *head)
+void sortDLL(dnode* head)
 {
-	if(head==NULL)
+	if(!head)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
 		exit(-1);
 	}
 	int n = countNodeDLL(head);
-	for (int i = 1; i <= n - 1; i++)
+	for(int i = 1; i <= n - 1; i++)
 	{
-		dnode *temp = head;
-		for (int j = 1; j <= n - i; j++)
+		dnode* temp = head;
+		for(int j = 1; j <= n - i; j++)
 		{
-			if (temp->val > temp->next->val)
+			if(temp->val > temp->next->val)
 			{
 				int tempVal = temp->val;
 				temp->val = temp->next->val;
@@ -246,33 +244,33 @@ void sortDLL(dnode *head)
 	}
 }
 
-void createCircularDLL(dnode **start)
+void createCircularDLL(dnode** start)
 {
-	if (*start == NULL)
+	if(!*start)
 	{
-		*start = (dnode *) malloc(sizeof(dnode));
+		*start = (dnode*) malloc(sizeof(dnode));
 	}
-	dnode *temp = *start;
-	temp->prev = NULL;
+	dnode* temp = *start;
+	temp->prev = nullptr;
 	int n;
 	printf("Enter the number of nodes: ");
 	scanf("%d", &n);
-	if (n <= 0)
+	if(n <= 0)
 	{
 		fprintf(stderr, "invalid number of nodes\n", errno);
 		exit(EXIT_FAILURE);
 	}
-	for (int i = 1; i <= n; i++)
+	for(int i = 1; i <= n; i++)
 	{
 		printf("Enter the value of each node: ");
 		scanf("%d", &(temp->val));
-		if (i < n)
+		if(i < n)
 		{
-			temp->next = (dnode *) malloc(sizeof(dnode));
+			temp->next = (dnode*) malloc(sizeof(dnode));
 			temp->next->prev = temp;
 			temp = temp->next;
 		}
-		if (i == n)
+		if(i == n)
 		{
 			temp->next = *start;
 			(*start)->prev = temp;
@@ -280,10 +278,10 @@ void createCircularDLL(dnode **start)
 	}
 }
 
-void displayCircularDLL(dnode *start)
+void displayCircularDLL(dnode* start)
 {
-	dnode *temp = start;
-	if (start == NULL)
+	dnode* temp = start;
+	if(!start)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
 		exit(EXIT_FAILURE);
@@ -294,20 +292,20 @@ void displayCircularDLL(dnode *start)
 		{
 			printf("%d ->", temp->val);
 			temp = temp->next;
-		} while (temp != start);
+		} while(temp != start);
 	}
 }
 
-int countNodeCircularDLL(dnode *start)
+int countNodeCircularDLL(dnode* start)
 {
-	if (start == NULL)
+	if(!start)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
 		exit(EXIT_FAILURE);
 	}
 	int count = 0;
-	dnode *temp = start;
-	if (temp->next == NULL)
+	dnode* temp = start;
+	if(!temp->next)
 	{
 		return count;
 	}
@@ -317,41 +315,41 @@ int countNodeCircularDLL(dnode *start)
 		{
 			count++;
 			temp = temp->next;
-		} while (temp != start);
+		} while(temp != start);
 		return count;
 	}
 }
 
-bool searchCircularDLL(dnode *start, int val)
+bool searchCircularDLL(dnode* start, int val)
 {
-	if (start == NULL)
+	if(!start)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
 		exit(EXIT_FAILURE);
 	}
-	dnode *temp = start;
+	dnode* temp = start;
 	do
 	{
-		if (temp->val == val)
+		if(temp->val == val)
 		{
 			return true;
 		}
 		temp = temp->next;
-	} while (temp != start);
+	} while(temp != start);
 	return false;
 }
 
-void insertElementBeginningCircularDLL(dnode **start, int val)
+void insertElementBeginningCircularDLL(dnode** start, int val)
 {
-	if (*start == NULL)
+	if(!*start)
 	{
-		*start=(dnode*)malloc(sizeof(dnode));
+		*start = (dnode*) malloc(sizeof(dnode));
 	}
-	dnode *inserted = (dnode *) malloc(sizeof(dnode));
-	dnode *temp = *start;
+	dnode* inserted = (dnode*) malloc(sizeof(dnode));
+	dnode* temp = *start;
 	inserted->val = val;
 	inserted->next = *start;
-	while (temp->next != *start)
+	while(temp->next != *start)
 	{
 		temp = temp->next;
 	}
@@ -360,24 +358,24 @@ void insertElementBeginningCircularDLL(dnode **start, int val)
 	*start = inserted;
 }
 
-void insertElementMiddleCircularDLL(dnode *start, int pos, int val)
+void insertElementMiddleCircularDLL(dnode* start, int pos, int val)
 {
-	if (start == NULL)
+	if(!start)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
 		exit(EXIT_FAILURE);
 	}
-	dnode *temp = start;
-	if (pos <= 1)
+	dnode* temp = start;
+	if(pos <= 1)
 	{
 		printf("Invalid pos");
 		return;
 	}
 	else
 	{
-		dnode *inserted = (dnode *) malloc(sizeof(dnode));
+		dnode* inserted = (dnode*) malloc(sizeof(dnode));
 		inserted->val = val;
-		for (int i = 1; i < pos - 1; i++)
+		for(int i = 1; i < pos - 1; i++)
 		{
 			temp = temp->next;
 		}
@@ -388,17 +386,17 @@ void insertElementMiddleCircularDLL(dnode *start, int pos, int val)
 	}
 }
 
-void insertElementEndCircularDLL(dnode *start, int val)
+void insertElementEndCircularDLL(dnode* start, int val)
 {
-	if (start == NULL)
+	if(!start)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
 		exit(EXIT_FAILURE);
 	}
-	dnode *temp = start;
-	dnode *inserted = (dnode *) malloc(sizeof(dnode));
+	dnode* temp = start;
+	dnode* inserted = (dnode*) malloc(sizeof(dnode));
 	inserted->val = val;
-	while (temp->next != start)
+	while(temp->next != start)
 	{
 		temp = temp->next;
 	}
@@ -410,10 +408,10 @@ void insertElementEndCircularDLL(dnode *start, int val)
 //broken needs fixing
 /*void deleteElementBeginningCircularDLL(dnode **start)
 {
-    if (*start == NULL)
+    if (!*start)
     {
         fprintf(stderr, "Linked list does not exist\n", errno);
-        exit(-1);
+        exit(EXIT_FAILURE);
     }
     dnode *deleted = *start;
     dnode *temp = *start;
@@ -428,24 +426,24 @@ void insertElementEndCircularDLL(dnode *start, int val)
     free(deleted);
 }*/
 
-void deleteElementMiddleCircularDLL(dnode *start, int pos)
+void deleteElementMiddleCircularDLL(dnode* start, int pos)
 {
-	if (start == NULL)
+	if(!start)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
 		exit(EXIT_FAILURE);
 	}
-	dnode *temp = start;
-	if (pos <= 1)
+	dnode* temp = start;
+	if(pos <= 1)
 	{
 		fprintf(stderr, "Invalid pos", errno);
 		exit(EXIT_FAILURE);
 	}
-	for (int i = 1; i < pos - 1; i++)
+	for(int i = 1; i < pos - 1; i++)
 	{
 		temp = temp->next;
 	}
-	dnode *deleted = temp->next;
+	dnode* deleted = temp->next;
 	deleted->next->prev = temp;
 	temp->next = deleted->next;
 	free(deleted);
@@ -463,20 +461,20 @@ void deleteElementMiddleCircularDLL(dnode *start, int pos)
     free(temp->next);
 }*/
 
-void sortCircularDLL(dnode *start)
+void sortCircularDLL(dnode* start)
 {
-	if (start == NULL)
+	if(!start)
 	{
 		fprintf(stderr, "Linked list does not exist\n", errno);
 		exit(EXIT_FAILURE);
 	}
 	int n = countNodeCircularDLL(start);
-	for (int i = 1; i <= n - 1; i++)
+	for(int i = 1; i <= n - 1; i++)
 	{
-		dnode *temp = start;
-		for (int j = 1; j <= n - i; j++)
+		dnode* temp = start;
+		for(int j = 1; j <= n - i; j++)
 		{
-			if (temp->val > temp->next->val)
+			if(temp->val > temp->next->val)
 			{
 				int tempVal = temp->val;
 				temp->val = temp->next->val;
