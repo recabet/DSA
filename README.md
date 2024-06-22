@@ -32,13 +32,13 @@ Each folder contains implementations of specific data structures or algorithms w
 
 To use any of the data structures or algorithms in this repository:
 
-1. Clone the repository:
+1. Clone the repository: git clone https://github.com/recabet/DSA.git
 
-2. Navigate to the desired folder (e.g., `hash`, `stack`, etc.):
+2. Navigate to the desired folder (e.g., `hash`, `stack`, etc.): cd <folder_name>
 
-3. Compile the source files (assuming you have `gcc` installed):
+3. Compile the source files (assuming you have `gcc` installed): gcc -o main.c <lib_name>.c main
 
-4. Run the executable:
+4. Run the executable: ./main
 
 ## Usage
 
