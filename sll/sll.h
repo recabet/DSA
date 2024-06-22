@@ -1,11 +1,9 @@
-#ifndef MYLIBS_SLL_H
-#define MYLIBS_SLL_H
+#ifndef SLL_H
+#define SLL_H
 
-#if !defined(__STDC_VERSION__) || __STDC_VERSION__ < 202300L
 
 #include <stdbool.h>
 
-#endif
 
 typedef struct Node {
 	int val;
@@ -76,4 +74,4 @@ void reverseCircularSLL(node* start);
 void sortCircularSLL(node* start);
 
 
-#endif //MYLIBS_SLL_H
+#endif //SLL_H

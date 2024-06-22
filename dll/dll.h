@@ -1,11 +1,8 @@
-#ifndef MYLIBS_DLL_H
-#define MYLIBS_DLL_H
-
-#if !defined(__STDC_VERSION__) || __STDC_VERSION__ < 202300L
+#ifndef DLL_H
+#define DLL_H
 
 #include<stdbool.h>
 
-#endif
 
 typedef struct Dnode {
 	int val;
@@ -62,4 +59,4 @@ void deleteElementMiddleCircularDLL(dnode* start, int pos);
 void sortCircularDLL(dnode* start);
 
 
-#endif //MYLIBS_DLL_H
+#endif //DLL_H

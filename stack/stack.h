@@ -1,11 +1,8 @@
-#ifndef MYLIBS_STACK_H
-#define MYLIBS_STACK_H
-
-#if !defined(__STDC_VERSION__) || __STDC_VERSION__ < 202300L
+#ifndef STACK_H
+#define STACK_H
 
 #include<stdbool.h>
 
-#endif
 
 typedef struct {
 	int* elements;
@@ -29,4 +26,4 @@ int peek(Stack* stack);
 
 void printStack(Stack* stack);
 
-#endif //MYLIBS_STACK_H
+#endif //STACK_H

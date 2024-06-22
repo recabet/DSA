@@ -2,8 +2,8 @@
 // Created by rajab on 11/06/24.
 //
 
-#ifndef MYLIBS_HASH_H
-#define MYLIBS_HASH_H
+#ifndef HASH_H
+#define HASH_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -34,4 +34,4 @@ Entry* lookup(Hashtable* ht, const char* name);
 void free_table(Hashtable* hashtable);
 
 
-#endif //MYLIBS_HASH_H
+#endif //HASH_H

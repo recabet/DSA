@@ -1,12 +1,7 @@
-#ifndef MYLIBS_QUEUE_H
-#define MYLIBS_QUEUE_H
-
-
-#if !defined(__STDC_VERSION__) || __STDC_VERSION__ < 202300L
+#ifndef QUEUE_H
+#define QUEUE_H
 
 #include <stdbool.h>
-
-#endif
 
 
 typedef struct {
@@ -32,4 +27,4 @@ int dequeue(Queue* queue);
 void printQueue(Queue* queue);
 
 
-#endif //MYLIBS_QUEUE_H
+#endif //QUEUE_H

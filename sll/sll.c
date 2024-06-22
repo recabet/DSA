@@ -32,7 +32,7 @@ void createSLL(node** head)
 			}
 			if(i == n)
 			{
-				temp->next = nullptr;
+				temp->next = NULL;
 			}
 		}
 	}
@@ -121,7 +121,7 @@ void insertElementEndSLL(node* head, int val)
 		temp = temp->next;
 	}
 	temp->next = inserted;
-	inserted->next = nullptr;
+	inserted->next = NULL;
 }
 
 void insertElementMiddleSLL(node* head, int pos, int val)
@@ -201,7 +201,7 @@ void deleteElementEndSLL(node* head)
 		temp = temp->next;
 	}
 	free(temp->next);
-	temp->next = nullptr;
+	temp->next = NULL;
 }
 
 void sortSLL(node* head)
@@ -309,7 +309,7 @@ void deleteSLL(node** head, int index1, int index2, int numberOfNodes)
 		exit(EXIT_FAILURE);
 	}
 	node* temp = *head;
-	node* prev = nullptr;
+	node* prev = NULL;
 	int currentIndex = 1;
 	while(temp && currentIndex < index1)
 	{
@@ -356,8 +356,8 @@ void insertSLLEnd(node* head1, node* head2)
 node* sliceSLL(node* head, int index1, int index2, int numberOfNodes)
 {
 	node* temp = head;
-	node* newHead = nullptr;
-	node* newTail = nullptr;
+	node* newHead = NULL;
+	node* newTail = NULL;
 	if(index1 <= 0 || index2 > numberOfNodes || index1 > index2)
 	{
 		fprintf(stderr, "Invalid slice parameters\n", errno);
@@ -368,7 +368,7 @@ node* sliceSLL(node* head, int index1, int index2, int numberOfNodes)
 		if(!temp)
 		{
 			printf("Invalid slice parameters\n");
-			return nullptr;
+			return NULL;
 		}
 		temp = temp->next;
 	}
@@ -376,7 +376,7 @@ node* sliceSLL(node* head, int index1, int index2, int numberOfNodes)
 	{
 		node* newTemp = (node*) malloc(sizeof(node));
 		newTemp->val = temp->val;
-		newTemp->next = nullptr;
+		newTemp->next = NULL;
 		if(!newHead)
 		{
 			newHead = newTemp;

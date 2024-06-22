@@ -89,6 +89,7 @@ int countNode(dnode* head)
 		count++;
 		temp = temp->next;
 	}
+	return count;
 }
 
 void insertElementBeginningDLL(dnode** head, int val)

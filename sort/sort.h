@@ -1,5 +1,5 @@
-#ifndef MYLIBS_SORT_H
-#define MYLIBS_SORT_H
+#ifndef SORT_H
+#define SORT_H
 
 void selectionSort(int* arr, int size);
 
@@ -14,4 +14,4 @@ void mergeSort(int* arr, int left, int right);
 void quickSort(int* arr, int size);
 
 
-#endif //MYLIBS_SORT_H
+#endif //SORT_H
