@@ -6,8 +6,8 @@
 
 
 typedef struct Node {
-	int val;
-	struct Node* next;
+    int val;
+    struct Node* next;
 } node;
 
 void createSLL(node** head);

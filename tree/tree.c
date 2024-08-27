@@ -214,10 +214,7 @@ void add_node(node* root, const int data)
             printf("Added node with data %d to the left of node with data %d\n", data, current->data);
             break;
         }
-        else
-        {
-            queue[rear++] = current->left;
-        }
+        queue[rear++] = current->left;
 
         if (!(int) current->right)
         {

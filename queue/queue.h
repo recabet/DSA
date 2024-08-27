@@ -5,10 +5,10 @@
 
 
 typedef struct {
-	int* elements;
-	int front;
-	int rear;
-	int capacity;
+    int* elements;
+    int front;
+    int rear;
+    int capacity;
 } Queue;
 
 
