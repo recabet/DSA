@@ -10,7 +10,7 @@ void createDLL(dnode** head)
         *head = (dnode *) malloc(sizeof(dnode));
     }
     dnode* temp = *head;
-    temp->prev = nullptr;
+    temp->prev = NULL;
     int n;
     printf("Enter the number of nodes: ");
     scanf("%d", &n);
@@ -31,7 +31,7 @@ void createDLL(dnode** head)
         }
         if (i == n)
         {
-            temp->next = nullptr;
+            temp->next = NULL;
         }
     }
 }
@@ -103,7 +103,7 @@ void insertElementBeginningDLL(dnode** head, const int val)
     dnode* temp = *head;
     temp->prev = inserted;
     inserted->next = temp;
-    inserted->prev = nullptr;
+    inserted->prev = NULL;
     *head = inserted;
 }
 
@@ -146,7 +146,7 @@ void insertElementEndDLL(dnode* head, const int val)
     {
         temp = temp->next;
     }
-    inserted->next = nullptr;
+    inserted->next = NULL;
     inserted->prev = temp;
     temp->next = inserted;
 }
@@ -160,7 +160,7 @@ void deleteElementBeginningDLL(dnode** head)
     }
     dnode* temp = *head;
     *head = temp->next;
-    temp->next->prev = nullptr;
+    temp->next->prev = NULL;
     free(temp);
 }
 
@@ -198,7 +198,7 @@ void deleteElementEndDLL(dnode* head)
     {
         temp = temp->next;
     }
-    temp->prev->next = nullptr;
+    temp->prev->next = NULL;
     free(temp);
 }
 
@@ -252,7 +252,7 @@ void createCircularDLL(dnode** start)
         *start = (dnode *) malloc(sizeof(dnode));
     }
     dnode* temp = *start;
-    temp->prev = nullptr;
+    temp->prev = NULL;
     int n;
     printf("Enter the number of nodes: ");
     scanf("%d", &n);

@@ -24,7 +24,7 @@ Hashtable* createHashTable()
     }
     for (size_t i = 0; i < TABLE_SIZE; i++)
     {
-        (ht->table)[i] = nullptr;
+        (ht->table)[i] = NULL;
     }
     return ht;
 }
@@ -48,7 +48,7 @@ void insert(Hashtable* ht, const char* name, int data)
 
     entry->name = name_copy;
     entry->data = data;
-    entry->next = nullptr;
+    entry->next = NULL;
 
     const long int index = hash(entry);
     if (!ht->table[index])
@@ -64,7 +64,7 @@ void insert(Hashtable* ht, const char* name, int data)
 
 Entry* lookup(const Hashtable* ht, const char* name)
 {
-    const Entry temp_entry = {name, 0, nullptr};
+    const Entry temp_entry = {name, 0, NULL};
     const long int index = hash(&temp_entry);
     Entry* temp = (ht->table)[index];
     while (temp)
@@ -75,7 +75,7 @@ Entry* lookup(const Hashtable* ht, const char* name)
         }
         temp = temp->next;
     }
-    return nullptr;
+    return NULL;
 }
 
 void free_table(Hashtable* hashtable)

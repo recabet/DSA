@@ -18,7 +18,7 @@ node* init_root(const int data)
 
 void create_branches(node* root, const int depth)
 {
-    if (depth <= 0 || root == NULL)
+    if (depth <= 0 ||!(int) root)
     {
         return;
     }
@@ -135,7 +135,7 @@ __sr__ __find_deepest_and_target_node__(const node* root, const int data)
     {
         return result;
     }
-    node** queue = malloc(100 * sizeof(node *));
+    node** queue = malloc(100 * sizeof(node*));
     int front = 0, rear = 0;
     queue[rear++] = root;
 
